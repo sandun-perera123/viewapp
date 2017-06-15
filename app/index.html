@@ -12,7 +12,7 @@
 
 </head>
 
-<body>
+<body ng-app="ViewApp">
 
 <div class="container">
   <div class="row header-row">
@@ -21,32 +21,33 @@
 
   <div class="row content-row">
       <div class="col-md-5 left-panel">
-        <form novalidate>
+        <form novalidate ng-controller="StudentController">
 
             <div class="form-group">
                 <label>First Name</label>
-                <input class="form-control" type="text" name="txtFirstName"/>
+                <input class="form-control" type="text" name="txtFirstName" ng-model="student.firstname"/>
+                <pre>student = {{student | json}}</pre>
             </div>
 
             <div class="form-group">
                 <label>Last Name</label>
-                <input class="form-control" type="text" name="txtLastName"/>
+                <input class="form-control" type="text" name="txtLastName" ng-model="student.lastname"/>
             </div>
 
             <div class="form-group">
                 <label>Date of Birth</label>
-                <input class="form-control" type="date" name="txtDob"/>
+                <input class="form-control" type="date" name="txtDob" ng-model="student.dob"/>
             </div>
 
             <div class="form-group">
                 <label>Gender</label> <br/>
-                <input type="radio" name="radioGender" value="Male" checked/> Male 
-                <input type="radio" name="radioGender" value="Female"/> Female 
+                <input type="radio" name="radioGender" value="Male" checked ng-model="student.gender"/> Male 
+                <input type="radio" name="radioGender" value="Female" ng-model="student.gender"/> Female 
             </div>
 
             <div class="form-group">
                 <label>NIC</label>
-                <input class="form-control" type="text" name="txtNic"/>
+                <input class="form-control" type="text" name="txtNic" ng-model="student.nic"/>
             </div>
 
             <div class="form-group">
@@ -96,6 +97,9 @@
                         </tbody>
                         
                     </table>
+
+                    
+
                 </div>
             </div>
 
@@ -106,20 +110,20 @@
 </body>
 
 <script>
-    /*
+    
     var viewapp = angular.module('ViewApp',[]);
 
     viewapp.controller('StudentController',function StudentController($scope){
-
+        
         $scope.firstname = "Sandun";
-        $student.lastname = "Perera";
+        $scope.lastname = "Perera";
         $scope.dob = "1993-03-06";
-        $scope.gender = "Male";
+        $scope.student = {gender:"Male"};
         $scope.nic = "930662313V";
-
+        
     });
 
-    
+    /*
     viewapp.config(function($routeProvider) {
         $routeProvider
 
