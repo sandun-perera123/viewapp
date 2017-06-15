@@ -1,0 +1,23 @@
+[
+    {
+        "firstname" : "Sandun",
+        "lastname" : "Perera",
+        "gender" : "Male",
+        "age" : "24 yrs",
+        "nic" : "930662313V"
+    },
+    {
+        "firstname" : "Charuni",
+        "lastname" : "Kaushalya",
+        "gender" : "Female",
+        "age" : "22 yrs",
+        "nic" : "950662313V"
+    },
+    {
+        "firstname" : "Rubika",
+        "lastname" : "Murugathas",
+        "gender" : "Female",
+        "age" : "25 yrs",
+        "nic" : "54545454545V"
+    }
+]

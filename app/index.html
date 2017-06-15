@@ -21,7 +21,7 @@
 
   <div class="row content-row">
       <div class="col-md-5 left-panel">
-        <form novalidate ng-controller="StudentController">
+        <form novalidate ng-controller="StudentFormController">
 
             <div class="form-group">
                 <label>First Name</label>
@@ -76,23 +76,23 @@
 
             <div class="row">
                 <div class="col-md-12">
-                    <table class="table">
+                    <table class="table" ng-controller="StudentTableController">
                         <thead>
                             <tr>
                                 <th>Full Name</th>
                                 <th>Gender</th>
-                                <th>Age</th>
+                                <th>DOB</th>
                                 <th>NIC</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
 
                         <tbody>
-                            <tr>
-                                <td>Sandun Madushan</td>
-                                <td>Male</td>
-                                <td>24 Yrs</td>
-                                <td>930662313V</td>
+                            <tr ng-repeat="student in students">
+                                <td>{{student.firstname}} {{student.lastname}}</td>
+                                <td>{{student.gender}}</td>
+                                <td>{{student.age}}</td>
+                                <td>{{student.nic}}</td>
                             </tr>
                         </tbody>
                         
@@ -113,8 +113,8 @@
     
     var viewapp = angular.module('ViewApp',[]);
 
-    viewapp.controller('StudentController',function StudentController($scope){
-        
+    viewapp.controller('StudentFormController',function StudentFormController($scope){
+
         $scope.firstname = "Sandun";
         $scope.lastname = "Perera";
         $scope.dob = "1993-03-06";
@@ -123,17 +123,18 @@
         
     });
 
-    /*
-    viewapp.config(function($routeProvider) {
-        $routeProvider
 
-            .when('/', {
-                templateUrl : 'index.html',
-                controller  : 'StudentController'
-            })
+    viewapp.controller('StudentTableController',function StudentTableController($scope, $http){
+        
+        $scope.students = [];
 
-    });  
-    */
+        $http.get("data/student_repository.json")
+        .then(function (response) {
+            $scope.students = response.data;
+        });
+        
+
+    });
 
 </script>
 
